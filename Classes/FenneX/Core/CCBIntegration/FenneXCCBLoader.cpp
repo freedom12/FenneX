@@ -223,7 +223,7 @@ Panel* loadCCBFromFileToFenneX(const char* file, const char* inPanel, int zIndex
                 {
                     node->setScaleX(node->getScaleX() / usedScale);
                     node->setScaleY(node->getScaleY() / usedScale);
-                    node->setContentSize(CCSizeMult(node->getContentSize(), usedScale));
+                    node->setContentSize(node->getContentSize());
                     //For depth 2 and more, the algorithm is the same
                     resizeChildren(parentNode, node, usedScale, 2);
                 }
