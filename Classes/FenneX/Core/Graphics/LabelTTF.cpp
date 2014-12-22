@@ -236,7 +236,7 @@ void LabelTTF::adjustLabel()
                 CCAssert(value.length() != 0, "Invalid UTF8 string");
                 delegate->setString(value.c_str());
                 size = delegate->getContentSize();
-                fitInside = size.height * scale <= realDimensions.height * 1.05 && size.width * scale <= realDimensions.width * 1.05;
+                fitInside = (size.height * scale <= realDimensions.height * 1.05 || delegate->getStringNumLines() == 1 ) && size.width * scale <= realDimensions.width * 1.05;
                 if(fitInside)
                     start = middle;
                 else
