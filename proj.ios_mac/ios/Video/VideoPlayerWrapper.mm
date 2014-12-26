@@ -30,7 +30,10 @@
 
 VideoPlayer::VideoPlayer(std::string file, CCPoint position, CCSize size, bool front, bool loop)
 {
-    float scaleFactor = [[CCEAGLView sharedEGLView] contentScaleFactor];
+    auto glview = cocos2d::Director::getInstance()->getOpenGLView();
+    CCEAGLView *eaglview = static_cast<CCEAGLView *>(glview->getEAGLView());
+    float scaleFactor = eaglview.contentScaleFactor;
+    //float scaleFactor = [[CCEAGLView sharedEGLView] contentScaleFactor];
     delegate = [[VideoPlayerImplIOS alloc] initWithPlayFile:[NSString stringWithUTF8String:file.c_str()]
                                                    position:CGPointMake(position.x / scaleFactor,
                                                                         position.y / scaleFactor)

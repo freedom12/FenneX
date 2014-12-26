@@ -252,7 +252,9 @@ static VideoRecorder* _sharedRecorder = nil;
 - (void) setPreviewPosition:(CGPoint)position size:(CGSize)size
 {
     _position = position;
-    float scale = [[CCEAGLView sharedEGLView] contentScaleFactor];
+    auto glview = cocos2d::Director::getInstance()->getOpenGLView();
+    CCEAGLView *eaglview = static_cast<CCEAGLView *>(glview->getEAGLView());
+    float scale = eaglview.contentScaleFactor;
     _position = CGPointMake(_position.x / scale, _position.y / scale);
     [self.previewLayer setBounds:CGRectMake(0, 0, size.height / scale, size.width / scale)];
     [self updateFrame];
