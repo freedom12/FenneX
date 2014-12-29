@@ -130,3 +130,14 @@ AppDelegate/AppMacros
 * add STRINGIFY macro in AppMacros for BUILD_VERSION
 * change code in AppDelegate to use it for displayStats
 
+
+plist
+----
+
+* Change all plist in ressource folder to Plain Text
+
+build.gradle
+---
+
+* Configure build.gradle to handle Assets if needed
+
