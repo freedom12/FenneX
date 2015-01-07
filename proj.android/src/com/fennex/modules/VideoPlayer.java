@@ -230,17 +230,7 @@ public class VideoPlayer extends Handler implements IVideoPlayer
             		lp.leftMargin = (int)(VideoPlayer.isFullScreen ? 0 : widthScreen - localX - (localWidth / 2) + 0.5);
             		lp.topMargin = (int)(VideoPlayer.isFullScreen ? 0 : heightScreen - localY - (localHeight / 2) + 0.5);
             		video.setLayoutParams(lp);
-                    Log.i(TAG, "widthScreen : " + widthScreen);
-                    Log.i(TAG, "heightScreen : " + heightScreen);
 
-                    Log.i(TAG, "localX : " + localX);
-                    Log.i(TAG, "localY : " + localY);
-
-                    Log.i(TAG, "localWidth : " + localWidth);
-                    Log.i(TAG, "localHeight : " + localHeight);
-
-    				Log.i(TAG, "Placing video in x: " + lp.leftMargin);
-    				Log.i(TAG, "Placing video in y: " + lp.topMargin);
     				videoView = video;
 			    }
 				FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams((int)widthScreen, (int)heightScreen);
