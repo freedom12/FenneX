@@ -272,4 +272,19 @@ bool isPackageInstalled(const std::string& packageName)
     return false;
 }
 
+
+bool launchPackage(const std::string& packageId, const std::string& infos)
+{
+    std::string url = packageId + "://" + infos;
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *URL = [NSURL URLWithString:[[NSString stringWithFormat:@"%s", url.c_str()] stringByAddingPercentEscapesUsingEncoding:
+                                       NSUTF8StringEncoding]];
+    if([application canOpenURL:URL])
+    {
+        [[UIApplication sharedApplication] openURL:URL];
+        return true;
+    }
+    return false;
+}
+
 NS_FENNEX_END

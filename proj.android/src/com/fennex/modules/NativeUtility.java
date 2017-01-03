@@ -342,4 +342,16 @@ public class NativeUtility
         }
         return true;
     }
+
+    public static boolean launchPackage(String packageName, String infos)
+    {
+        Intent packageIntent = getMainActivity().getPackageManager().getLaunchIntentForPackage("com.google.android.youtube");
+        if (packageIntent != null)
+        {
+            packageIntent.putExtra("Infos", infos);
+            getMainActivity().startActivity(packageIntent);
+            return true;
+        }
+        return false;
+    }
 }

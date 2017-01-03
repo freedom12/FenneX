@@ -345,6 +345,20 @@ bool isPackageInstalled(const std::string& packageId)
     return result;
 }
 
+bool launchPackage(const std::string& packageId, const std::string& infos)
+{
+    JniMethodInfo minfo;
+    bool functionExist = JniHelper::getStaticMethodInfo(minfo, CLASS_NAME, "launchPackage", "(Ljava/lang/String;Ljava/lang/String;)Z");
+    CCAssert(functionExist, "Function doesn't exist");
+    jstring jpackageId = minfo.env->NewStringUTF(packageId.c_str());
+    jstring jinfos = minfo.env->NewStringUTF(infos.c_str());
+    bool result = minfo.env->CallStaticBooleanMethod(minfo.classID, minfo.methodID, jpackageId, jinfos);
+    minfo.env->DeleteLocalRef(minfo.classID);
+    minfo.env->DeleteLocalRef(jpackageId);
+    minfo.env->DeleteLocalRef(jinfos);
+    return result;
+}
+
 NS_FENNEX_END
 
 extern "C"
