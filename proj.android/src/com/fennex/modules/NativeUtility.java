@@ -345,7 +345,7 @@ public class NativeUtility
 
     public static boolean launchPackage(String packageName, String infos)
     {
-        Intent packageIntent = getMainActivity().getPackageManager().getLaunchIntentForPackage("com.google.android.youtube");
+        Intent packageIntent = getMainActivity().getPackageManager().getLaunchIntentForPackage(packageName);
         if (packageIntent != null)
         {
             packageIntent.putExtra("Infos", infos);
